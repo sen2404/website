@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,10 +128,50 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietDDHsController.cs" />
+    <Compile Include="Controllers\ChiTietNhapsController.cs" />
+    <Compile Include="Controllers\ChiTietXuatsController.cs" />
+    <Compile Include="Controllers\data.cs" />
+    <Compile Include="Controllers\DDHsController.cs" />
+    <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangs.cs" />
+    <Compile Include="Controllers\KhachHangsController.cs" />
+    <Compile Include="Controllers\NCCsController.cs" />
+    <Compile Include="Controllers\NVGiaoHangsController.cs" />
+    <Compile Include="Controllers\PhieuNhapsController.cs" />
+    <Compile Include="Controllers\PhieuXuatsController.cs" />
+    <Compile Include="Controllers\TonsController.cs" />
+    <Compile Include="Controllers\VatTusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011180506405_Table.cs" />
+    <Compile Include="Migrations\202011180506405_Table.Designer.cs">
+      <DependentUpon>202011180506405_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011190929258_Update_Table_DDH.cs" />
+    <Compile Include="Migrations\202011190929258_Update_Table_DDH.Designer.cs">
+      <DependentUpon>202011190929258_Update_Table_DDH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011191401330_update_table_KhachHang.cs" />
+    <Compile Include="Migrations\202011191401330_update_table_KhachHang.Designer.cs">
+      <DependentUpon>202011191401330_update_table_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ChiTietDDH.cs" />
+    <Compile Include="Models\ChiTietNhap.cs" />
+    <Compile Include="Models\ChiTietXuat.cs" />
+    <Compile Include="Models\DBConnect.cs" />
+    <Compile Include="Models\DDH.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\NCC.cs" />
+    <Compile Include="Models\NVGiaoHang.cs" />
+    <Compile Include="Models\PhieuNhap.cs" />
+    <Compile Include="Models\PhieuXuat.cs" />
+    <Compile Include="Models\Ton.cs" />
+    <Compile Include="Models\VatTu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,10 +210,71 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\KhachHangs\Create.cshtml" />
+    <Content Include="Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Views\KhachHangs\Details.cshtml" />
+    <Content Include="Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Views\KhachHangs\Index.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\Tons\Create.cshtml" />
+    <Content Include="Views\Tons\Delete.cshtml" />
+    <Content Include="Views\Tons\Details.cshtml" />
+    <Content Include="Views\Tons\Edit.cshtml" />
+    <Content Include="Views\Tons\Index.cshtml" />
+    <Content Include="Views\VatTus\Create.cshtml" />
+    <Content Include="Views\VatTus\Delete.cshtml" />
+    <Content Include="Views\VatTus\Details.cshtml" />
+    <Content Include="Views\VatTus\Edit.cshtml" />
+    <Content Include="Views\VatTus\Index.cshtml" />
+    <Content Include="Views\NCCs\Create.cshtml" />
+    <Content Include="Views\NCCs\Delete.cshtml" />
+    <Content Include="Views\NCCs\Details.cshtml" />
+    <Content Include="Views\NCCs\Edit.cshtml" />
+    <Content Include="Views\NCCs\Index.cshtml" />
+    <Content Include="Views\PhieuNhaps\Create.cshtml" />
+    <Content Include="Views\PhieuNhaps\Delete.cshtml" />
+    <Content Include="Views\PhieuNhaps\Details.cshtml" />
+    <Content Include="Views\PhieuNhaps\Edit.cshtml" />
+    <Content Include="Views\PhieuNhaps\Index.cshtml" />
+    <Content Include="Views\ChiTietNhaps\Create.cshtml" />
+    <Content Include="Views\ChiTietNhaps\Delete.cshtml" />
+    <Content Include="Views\ChiTietNhaps\Details.cshtml" />
+    <Content Include="Views\ChiTietNhaps\Edit.cshtml" />
+    <Content Include="Views\ChiTietNhaps\Index.cshtml" />
+    <Content Include="Views\PhieuXuats\Create.cshtml" />
+    <Content Include="Views\PhieuXuats\Delete.cshtml" />
+    <Content Include="Views\PhieuXuats\Details.cshtml" />
+    <Content Include="Views\PhieuXuats\Edit.cshtml" />
+    <Content Include="Views\PhieuXuats\Index.cshtml" />
+    <Content Include="Views\ChiTietXuats\Create.cshtml" />
+    <Content Include="Views\ChiTietXuats\Delete.cshtml" />
+    <Content Include="Views\ChiTietXuats\Details.cshtml" />
+    <Content Include="Views\ChiTietXuats\Edit.cshtml" />
+    <Content Include="Views\ChiTietXuats\Index.cshtml" />
+    <Content Include="Views\NVGiaoHangs\Create.cshtml" />
+    <Content Include="Views\NVGiaoHangs\Delete.cshtml" />
+    <Content Include="Views\NVGiaoHangs\Details.cshtml" />
+    <Content Include="Views\NVGiaoHangs\Edit.cshtml" />
+    <Content Include="Views\NVGiaoHangs\Index.cshtml" />
+    <Content Include="Views\DDHs\Create.cshtml" />
+    <Content Include="Views\DDHs\Delete.cshtml" />
+    <Content Include="Views\DDHs\Details.cshtml" />
+    <Content Include="Views\DDHs\Edit.cshtml" />
+    <Content Include="Views\DDHs\Index.cshtml" />
+    <Content Include="Views\ChiTietDDHs\Create.cshtml" />
+    <Content Include="Views\ChiTietDDHs\Delete.cshtml" />
+    <Content Include="Views\ChiTietDDHs\Details.cshtml" />
+    <Content Include="Views\ChiTietDDHs\Edit.cshtml" />
+    <Content Include="Views\ChiTietDDHs\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +288,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011180506405_Table.resx">
+      <DependentUpon>202011180506405_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011190929258_Update_Table_DDH.resx">
+      <DependentUpon>202011190929258_Update_Table_DDH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011191401330_update_table_KhachHang.resx">
+      <DependentUpon>202011191401330_update_table_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

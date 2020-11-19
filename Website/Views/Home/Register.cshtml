@@ -1,0 +1,60 @@
+﻿@model Website.Models.KhachHang
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+<div class="container">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+
+
+            <div>
+                @Html.LabelFor(m => m.TenKhachHang, "Tên Khách Hàng")
+                @Html.TextBoxFor(m => m.TenKhachHang, new { @class = "form-control", @placeholder = "Họ và Tên" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DienThoai,"Số Điện Thoại")
+                @Html.TextBoxFor(m => m.DienThoai, new { @class = "form-control", @placeholder = "Số Điện Thoại" })
+
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DiaChi,"Địa Chỉ")
+                @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email,"Email")
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password,"Password")
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.confirm_password,"Confirm Password")
+                @Html.PasswordFor(m => m.confirm_password, new { @class = "form-control", @placeholder = "Confim Password" })
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" />
+            </div>
+
+
+        }
+    </div>
+
+</div>
+
+
+
+

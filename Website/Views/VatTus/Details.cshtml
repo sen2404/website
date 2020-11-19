@@ -1,0 +1,59 @@
+﻿@model Website.Models.VatTu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VatTu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NCC.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCC.TenNCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenVatTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenVatTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HangSanXuat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSanXuat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaVatTu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

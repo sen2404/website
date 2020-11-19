@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Website.Models.Ton>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VatTu.TenVatTu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLTon)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VatTu.TenVatTu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLTon)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.STT }) |
+            @Html.ActionLink("Details", "Details", new { id=item.STT }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.STT })
+        </td>
+    </tr>
+}
+
+</table>
